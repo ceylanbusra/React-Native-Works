@@ -25,10 +25,11 @@ https://user-images.githubusercontent.com/68326893/141653546-44d9ce79-b353-4c9f-
 REDUX WORKING
 =>  Global state te tutulan name List listesine ilk sayfadan ekleme yapılır ve ikinci sayfa da useSelector ile flatListin datasına eşitlenerek listenin içindeki objeler çekilir.
 
-![Screenshot_1639492412](https://user-images.githubusercontent.com/68326893/146020048-1870b45f-9432-4229-9c34-93da727b494e.png)
+ <img src="https://user-images.githubusercontent.com/68326893/146020048-1870b45f-9432-4229-9c34-93da727b494e.png" width="200" />
+
+ <img src="https://user-images.githubusercontent.com/68326893/146020036-2c4b3f65-3ad4-4179-a087-829b0bbf1c22.png" width="200" />
 
 
 
-![Screenshot_1639492422](https://user-images.githubusercontent.com/68326893/146020036-2c4b3f65-3ad4-4179-a087-829b0bbf1c22.png)
 
 
