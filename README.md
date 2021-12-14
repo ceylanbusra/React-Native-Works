@@ -23,7 +23,7 @@ MUSICAPP
 https://user-images.githubusercontent.com/68326893/141653546-44d9ce79-b353-4c9f-a000-9de998be7d9e.mp4
 
 REDUX WORKING
-=>  Global state te tutulan name List listesine ilk sayfadan ekleme yapılır ve ikinci sayfa da useSelector ile flatListin datasına eşitlenerek listenin içindeki objeler çekilir.
+=>  Global state te tutulan name List listesine ilk sayfadan ekleme yapılır ve ikinci sayfa da useSelector ile flatListin datasına eşitlenerek listenin içindeki objeler çekilir.Her bir item değerinin yanındaki "Sil" butonu ile de global state te tutulan isim değeri id leri karsılaştırılarak silinir. 
 
  <img src="https://user-images.githubusercontent.com/68326893/146020048-1870b45f-9432-4229-9c34-93da727b494e.png" width="200" />
 
