@@ -5,13 +5,13 @@ import useFetch from "../../hooks/useFetch/useFetch";
 import Config from "react-native-config";
 const API_URL = "https://www.themuse.com/api/public/jobs";
 import JobsCard from "../../components/jobsCard/jobsCard";
+import { useSelector } from "react-redux";
 
 export default function Jobs({ navigation }) {
   const [page, setPage] = useState(0);
-
+  const { favList } = useSelector((state) => state.Reducer);
   const { data, error, loading } = useFetch(API_URL + `?page=${page}`);
-console.log("jobstaki data",data);
-
+console.log("favList",favList);
   const sonrakiSayfa = () => {
     setPage(page + 1);
     console.log("page artırıldı", page);
@@ -39,6 +39,7 @@ console.log("jobstaki data",data);
       <View style={styles.buttonWrapper}>
         <Button title="Önceki Sayfa" color="#0288d1" onPress={oncekiSayfa} />
         <Button title="Sonraki Sayfa" color="#0288d1" onPress={sonrakiSayfa} />
+        <Button title="Fav  Sayfası" color="#0288d1" onPress={navigation.navigate("FavPage")} />
       </View>
     </View>
   );
