@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-//Burayı nesne fonksiyonu gibi düşünebiliriz. ^tane parametre geçtik. 
+//Burayı nesne fonksiyonu gibi düşünebiliriz. 3 tane parametre geçtik. 
 //error data ve loading adlı. 
 //bunları bu sayfa içinde güncelledirk. 
 //En kritik olan şey ise en sonra bu 3 ünü return etmemizdi .

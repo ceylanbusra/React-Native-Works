@@ -1,45 +1,59 @@
-import { StyleSheet, Text, View,FlatList } from 'react-native'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Alert,
+  Button,
+} from "react-native";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import JobsCard from "../../components/jobsCard/jobsCard";
 
-
-const FavPage = () => {
-
+const FavPage = ({ navigation }) => {
+  const dispatch = useDispatch();
   const { favList } = useSelector((state) => state.Reducer);
-  console.log("fav List", favList);
+  console.log("favlist.length", favList.length);
 
-const renderItem =(item)=>{
-    console.log("item",item);
-    return(
-      <TouchableOpacity >
-      <View style={styles.mainContainer}>
-        <View style={styles.itemWrapper}>
-          <Text style={styles.text}>{item.name}</Text>
-          <Text>{item.company.name}</Text>
-          <View style={styles.locationWrapper}>
-            <Text style={{ color: "#fff", alignSelf: "center" }}>
-              {item?.locations[0]?.name ? item?.locations[0]?.name : "boş"}
-            </Text>
-          </View>
+  const removeJobItems = (id) => {
+    // console.log(
+    //   "removenin içindeki item değeri nasıl geliyor görmek icun",
+    //   id
+    // );
+    dispatch({ type: "REMOVE_FAVORITE", payload: id });
+    // Alert.alert("remova basıldı");
+  };
 
-          <Text style={{ alignSelf: "flex-end", color: "#ff8a65" }}>
-            {item?.levels[0]?.name}
-          </Text>
+  const renderItem = (item) => {
+    console.log("buraya giriyor musun bakalım", item);
+    console.log("--------------------------------------");
+    console.log("item değeri,", item.item.id);
+
+    return (
+      <View>
+        <JobsCard jobs={item.item} onSelected={null} />
+        <View style={styles.button_container}>
+          <TouchableOpacity onPress={removeJobItems(item.item.id)}>
+            <Text> Remove</Text>
+          </TouchableOpacity>
         </View>
       </View>
-    </TouchableOpacity>
-    )
-}
+    );
+  };
 
   return (
     <View>
-      <Text>favPage</Text>
-     <FlatList data={favList}  renderItem ={renderItem}/>
+      {favList.length !== 0 ? (
+        <FlatList data={favList} renderItem={renderItem} />
+      ) : (
+        <Text> FavList is Empty</Text>
+      )}
     </View>
-  )
-}
+  );
+};
 
-export default FavPage
+export default FavPage;
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -61,4 +75,11 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
   },
+  button_container: {
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 10,
+  },
 });
+
+//removeJobItems(item.item.id)

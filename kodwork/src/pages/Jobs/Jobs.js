@@ -9,9 +9,9 @@ import { useSelector } from "react-redux";
 
 export default function Jobs({ navigation }) {
   const [page, setPage] = useState(0);
-  const { favList } = useSelector((state) => state.Reducer);
+
   const { data, error, loading } = useFetch(API_URL + `?page=${page}`);
-console.log("favList",favList);
+
   const sonrakiSayfa = () => {
     setPage(page + 1);
     console.log("page artırıldı", page);
@@ -22,11 +22,11 @@ console.log("favList",favList);
   };
 
   const renderItem = ({ item }) => {
-    const id= item.id;
+    const id = item.id;
     return (
       <JobsCard
         jobs={item}
-        onSelected={() => navigation.navigate("JobDetail",{id})}
+        onSelected={() => navigation.navigate("JobDetail", { id })}
       />
     );
   };
@@ -39,7 +39,7 @@ console.log("favList",favList);
       <View style={styles.buttonWrapper}>
         <Button title="Önceki Sayfa" color="#0288d1" onPress={oncekiSayfa} />
         <Button title="Sonraki Sayfa" color="#0288d1" onPress={sonrakiSayfa} />
-        <Button title="Fav  Sayfası" color="#0288d1" onPress={navigation.navigate("FavPage")} />
+        {/* <Button title="Fav  Sayfası" color="#0288d1" onPress={navigation.navigate("FavPage")} /> */}
       </View>
     </View>
   );

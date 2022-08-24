@@ -1,20 +1,23 @@
+import action from "./action";
 
-import action from './action';
-
- const initial_state ={
-  favList :[],
- }
-     
-
+const initial_state = {
+  favList: [],
+};
 
 const Reducer = (state = initial_state, action) => {
-    switch (action.type) {
-      case 'ADD_FAVORITE':
-        return {
-          ...state,favList: action.payload     
-        }
-      default:
-        return state
-    }
+  switch (action.type) {
+    case "ADD_FAVORITE":
+      return {
+        ...state,
+        favList: [...state.favList, action.payload],
+      };
+
+    case "REMOVE_FAVORITE":
+      return {
+        favList: [...state.favList.filter((i) => i !== action.payload)],
+      };
+    default:
+      return state;
   }
-  export default Reducer
+};
+export default Reducer;

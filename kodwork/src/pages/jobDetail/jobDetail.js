@@ -12,6 +12,8 @@ import React from "react";
 import useFetch from "../../hooks/useFetch/useFetch";
 import RenderHtml from "react-native-render-html";
 import { useDispatch } from "react-redux";
+import Loading from "../../components/Loading/Loading";
+
 
 const JobDetail = ({ route }) => {
   const dispatch = useDispatch();
@@ -19,11 +21,21 @@ const JobDetail = ({ route }) => {
   const API_URL = `https://www.themuse.com/api/public/jobs/${id}`;
 
   const { loading, error, data } = useFetch(API_URL);
-  //console.log(data.categories,"data.categories");
+
+
+
+  if (error) {
+    return <Error />;
+  }
+  if(loading){
+    return <Loading/>;
+  }
+ 
 
   const source = {
     html: `${data.contents}`,
   };
+
 
   const addFavorite = () => {
     dispatch({ type: "ADD_FAVORITE", payload: data });
@@ -31,13 +43,6 @@ const JobDetail = ({ route }) => {
   const alertMessage =()=>{
     Alert.alert("Başvrunuz başarıyla gönderilmiştir..");
   }
-
-  /**
- *
-     {<Text>{data?.categories[0]?.name? data?.categories[0].name : "null"}</Text>}
- {<Text> locations: {data?.locations[0]?.name ? data?.locations[0].name : "null"}</Text>}
-  {<Text> Level: {data?.levels[0]?.name ? data?.levels[0].name : "null"}</Text>}
- */
 
   return (
     <ScrollView style={styles.mainContainer}>
@@ -48,6 +53,7 @@ const JobDetail = ({ route }) => {
         <Text>JOB DETAIL</Text>
       </View>
       <View style={styles.secondContainer}>
+      
         <RenderHtml
           baseStyle={{ marginHorizontal: 10, color: "#000", fontSize: 14 }}
           contentWidth={Dimensions.get("window").width}

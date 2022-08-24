@@ -6,8 +6,8 @@ const JobsCard = ({ jobs,onSelected }) => {
     <TouchableOpacity  onPress={onSelected}>
       <View style={styles.mainContainer}>
         <View style={styles.itemWrapper}>
-          <Text style={styles.text}>{jobs.name}</Text>
-          <Text>{jobs.company.name}</Text>
+          <Text style={styles.text}>{jobs?.name}</Text>
+          <Text>{jobs?.company?.name ?  jobs?.company?.name : "null"}</Text>
           <View style={styles.locationWrapper}>
             <Text style={{ color: "#fff", alignSelf: "center" }}>
               {jobs?.locations[0]?.name ? jobs?.locations[0]?.name : "boş"}
